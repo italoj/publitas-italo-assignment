@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import Slider from './components/slider/Slider'
+
+export default class App extends React.Component {
+  render() {
+    const data = [
+      {url: "http://lorempixel.com/600/400/"},
+      {url: "http://lorempixel.com/800/200/"},
+      {url: "http://lorempixel.com/400/600/"}
+    ]
+
+    return (
+      <div className="app">
+        <Header />
+        <section className="container mt-5 mb-5">
+          <Slider width={1110} height={500} data={data} />
+        </section>
+        <Footer />
+      </div>
+    )
+  }
 }
-
-export default App;
