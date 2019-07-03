@@ -5,7 +5,8 @@ export default class Footer extends React.Component {
     return (
       <footer className="footer text-center">
         <hr/>
-        <p>Made with love to Publitas.com</p>
+        <p className="mb-0">Made with love to Publitas.com</p>
+        <p className="text-primary mt-0"><small>Ítalo Araújo Assignment</small></p>
       </footer>
     )
   }

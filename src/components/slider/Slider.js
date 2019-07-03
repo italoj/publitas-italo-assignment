@@ -5,7 +5,7 @@ import Image from './Image'
 export default class Slider extends React.Component {
   renderData() {
     const { width, height, data } = this.props
-    return data.map((item, index) => <Image key={`${index}`} x={width * index} src={item.url} canvasWidth={width} canvasHeight={height} />)
+    return data.map((item, index) => <Image key={`${index}`} src={item.url} canvasWidth={width} canvasHeight={height} index={index} />)
   }
 
   draggableHandler(pos) {

@@ -1,12 +1,14 @@
 import React from 'react'
-import { Group, Image } from 'react-konva'
+import { Group, Rect, Image } from 'react-konva'
 
 export default class ImageComponent extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      image: null
+      image: null,
+      xAxis: null,
+      yAxis: null
     }
   }
 
@@ -31,17 +33,26 @@ export default class ImageComponent extends React.Component {
   }
 
   handleLoad = () => {
-    this.setState({ image: this.image })
+    this.setState({
+      image: this.image,
+      width: this.image.naturalWidth,
+      height: this.image.naturalHeight
+    })
   }
 
   render() {
-    const {width, height, x, y} = this.props
-    const { image } = this.state
+    const { image, width, height } = this.state
+    const {canvasWidth, canvasHeight, index} = this.props
 
-    console.log(this.image)
+    const position = canvasWidth * index
+    const xAxis = (canvasWidth - width)/2 + position
+    const yAxis = (canvasHeight - height)/2
 
     return (
-        <Image width={width} height={height} image={image} x={x} />
+      <Group>
+        <Image image={image} x={xAxis} y={yAxis} />
+        <Rect width={canvasWidth} height={canvasHeight} x={position} y={0} />
+      </Group>
     )
   }
 }
