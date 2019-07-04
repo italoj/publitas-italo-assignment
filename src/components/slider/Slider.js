@@ -25,10 +25,18 @@ export default class Slider extends React.Component {
   }
 
   render() {
+    if (!this.props.data || !this.props.data.length) {
+      return (
+        <div className="alert alert-warning text-center">
+          <p>Nenhuma imagem para exibir</p>
+        </div>
+      )
+    }
+
     return (
       <Stage className="slider" width={this.props.width} height={this.props.height}>
         <Layer draggable={true} dragBoundFunc={this.draggableHandler.bind(this)}>
-          {this.renderData()}
+          {this.props.data && this.renderData()}
         </Layer>
       </Stage>
     )
